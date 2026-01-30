@@ -18,13 +18,6 @@ public class Main {
         // Uso de Scanner para recibir entradas del usuario
         Scanner input = new Scanner(System.in);
 
-        //Variables
-        String nombre;
-        String carnet;
-
-        //Variable a utilizar en el menu en validación de switch
-        int opcion = 0;
-
         // Recorrido de Map con Lambda antes de eliminar(pruebas) - [BORRAR]
         alumnos.forEach((c, n) -> {
             System.out.println("Carnet: " + c + ", Nombre: " + n);
