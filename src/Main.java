@@ -21,17 +21,30 @@ public class Main {
         //Variable a utilizar en el menu en validación de switch
         int opcion = 0;
 
+    }
+
+    /**
+     * Encapsulación del metodo de búsqueda de alumno por carnet
+     * Esto facilita usar la lógica de búsqueda del alumno en el menu principal
+     * El método recibe el Map de alumnos como parámetro
+     * Para definir en que colección ingresar el dato del alumno
+     * */
+    private static void buscarAlumno(Scanner input, Map<String, String> alumnos) {
+        String carnet;
+
         //Ejemplo de busqueda de alumnos
         System.out.println("Apartado para buscar alumno por carnet: ");
         System.out.println("Digite el carnet del alumno que desea buscar: ");
-         carnet = input.nextLine();
-         if(alumnos.containsKey(carnet)){
-            String nombreAlumno = alumnos.get(carnet);
-            System.out.println("Carnet : " + carnet);
-            System.out.println("Nombre : " + nombreAlumno);
+        carnet = input.nextLine(); //Lee el carnet ingresado por el usuario y lo almacena en la variable carnet
 
-         }else{
-             System.out.println("Alumno no encontrado");
-         }
+        // Verificamos si la llave (carnet) existe dentro del mapa
+        if(alumnos.containsKey(carnet)){
+           String nombreAlumno = alumnos.get(carnet);
+           System.out.println("Carnet : " + carnet);
+           System.out.println("Nombre : " + nombreAlumno);
+
+        }else{
+            System.out.println("Alumno no encontrado");
+        }
     }
 }
