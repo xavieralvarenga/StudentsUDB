@@ -27,7 +27,7 @@ public class Main {
      * Encapsulación del metodo de búsqueda de alumno por carnet
      * Esto facilita usar la lógica de búsqueda del alumno en el menu principal
      * El método recibe el Map de alumnos como parámetro
-     * Para definir en que colección ingresar el dato del alumno
+     * Para definir en que colección buscar y obtener el valor del nombre del alumno
      * */
     private static void buscarAlumno(Scanner input, Map<String, String> alumnos) {
         String carnet;
