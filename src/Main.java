@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        /**
+        /*
          * Estructura recomendada: HashMap<Llave: Carnet, Valor: Nombre>
          * Esta estructura (Map) actuará como la parte de persistencia (BD)
          * */
@@ -24,6 +24,7 @@ public class Main {
         });
 
         eliminarAlumno(input, alumnos);
+        //mostrarAlumnos(alumnos);
 
     }
 
@@ -105,5 +106,20 @@ public class Main {
                     System.out.println("Carnet: " + id + " | Alumno: " + nombre)
             );
         }
+    }
+
+    /*
+    *   Metodo para mostrar/listar todos los alumnos
+    *   Aplicando Guard Clause para validar si el HashMap de alumnos esta vacio antes de mostrar informacion
+    *  */
+    private static void mostrarAlumnos(Map<Integer, String> alumnos) {
+        if (alumnos.isEmpty()) {
+            System.out.print("\n No hay alumnos ingresados en el sistema");
+            return;
+        }
+
+        System.out.print("\n--- Alumnos ingresados en el sistema ---");
+
+        alumnos.forEach((id, nombre) -> System.out.print("\n Carnet: " + id + " | Alumno: " + nombre));
     }
 }
