@@ -29,6 +29,7 @@ public class Main {
             System.out.println("6. Salir");
             System.out.println("====================================");
 
+            //Uso de try-catch para manejar excepciones de entrada no numérica en el menú
             try {
                 System.out.print("Ingrese el opcion: ");
                 opcion = input.nextInt();
@@ -36,8 +37,7 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         //Crear el apartado para agregar alumno
-                        System.out.print("Ingrese el alumno: ");
-                        System.out.print("Ingrese el nombre: ");
+                        System.out.println("Ingrese el nombre: ");
                         String nombre = input.next();
                         System.out.print("Ingrese el carnet: ");
                         String carnet = input.next();
@@ -112,46 +112,35 @@ public class Main {
      */
     private static void eliminarAlumno(Scanner input, Map<String, String> alumnos) {
 
+        System.out.println("\n--- Apartado para eliminar alumno ---");
+        input.nextLine(); // Limpiamos el buffer del Scanner
+
+        System.out.print("Digite el carnet del alumno que desea eliminar: ");
         String carnet = input.nextLine(); // Inicializamos la variable para almacenar el carnet del alumno a eliminar
-        boolean datoValido = false; // Bandera para controlar el bucle
 
-        // Bucle de validación: se repetirá mientras 'datoValido' sea falso
-        while (!datoValido) {
-            try {
-                System.out.println("Digite el carnet del alumno que desea eliminar: ");
-                carnet = input.next(); // Intenta leer el entero
-                input.nextLine();         // Limpia el buffer (el "Enter" sobrante)
-                datoValido = true;        // Si llega aquí, el dato es correcto y saldrá del bucle
-            } catch (Exception e) {
-                // Si el usuario ingresa letras, se dispara esta sección
-                System.out.println("Error: El carnet debe ser un valor numérico. Intente de nuevo.");
-                input.nextLine();         // LIMPIEZA CLAVE: elimina el texto erróneo del buffer
+            //Validamos si el alumno existe en el sistema antes de intentar eliminarlo
+            if (alumnos.containsKey(carnet)) {
+                String alumnoEliminado = alumnos.remove(carnet);
+
+                /* *  Lógica de Negocio: Intentar remover el elemento.
+                 * El método .remove(key) de Map devuelve el valor eliminado si existe,
+                 * o devuelve 'null' si la llave no fue encontrada.
+                 */
+                System.out.println("Eliminación de alumno exitosa. (Se eliminó a: " + alumnoEliminado + ")");
             }
-        }
-        // Al salir del bucle, ya tenemos la seguridad de que 'carnet' es un número válido.
+            else {
+                System.out.println("Alumno no ha sido encontrado en el sistema.");
+            }
 
-        /* *  Lógica de Negocio: Intentar remover el elemento.
-         * El método .remove(key) de Map devuelve el valor eliminado si existe,
-         * o devuelve 'null' si la llave no fue encontrada.
-         */
-        String alumnoEliminado = alumnos.remove(carnet);
-
-        // Salida de datos: Mensajes condicionales según el requerimiento de la guía
-        if (alumnoEliminado != null) {
-            // Mensaje de éxito si el retorno no fue nulo
-            System.out.println("Eliminación de alumno exitosa. (Se eliminó a: " + alumnoEliminado + ")");
-        } else {
-            // Mensaje específico requerido para cuando el registro no existe
-            System.out.println("Alumno no ha sido encontrado en el sistema.");
-        }
-
-        //  Fase de depuración (Temporal): Visualización mediante Java 8 Lambda
         // Solo se ejecuta si hay elementos restantes en el mapa.
         if (!alumnos.isEmpty()) {
             System.out.println("\n--- Registros restantes en el sistema ---");
             alumnos.forEach((id, nombre) ->
                     System.out.println("Carnet: " + id + " | Alumno: " + nombre)
             );
+        }
+        else {
+            System.out.println("\nNo hay alumnos restantes en el sistema.");
         }
     }
 
