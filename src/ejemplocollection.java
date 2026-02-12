@@ -10,18 +10,19 @@ public class ejemplocollection {
 
         // Agrega los elementos
         miColeccion.add("Manzana");
-        miColeccion.add("Banana");
+        miColeccion.add("Jocote");
+        miColeccion.add("Guineo");
         miColeccion.add("Naranja");
-        miColeccion.add("Manzana"); // No se agregará  (duplicado)
+        miColeccion.add("Manzana"); // No se agregará (duplicado)
 
         // Muestra los elementos
         System.out.println("Elementos en la colección:");
         System.out.println(miColeccion);
 
         // Elimina un elemento
-        miColeccion.remove("Banana");
-        System.out.println("Después de eliminar 'Banana':");
-        System.out.println(miColeccion);
+        miColeccion.remove("Guineo");
+        System.out.println("Después de eliminar  'Guineo':");
+        System.out.println("nos quedan solo " + miColeccion);
 
         // Muestra el tamaño
         System.out.println("Cantidad de elementos: " + miColeccion.size());
