@@ -1,20 +1,20 @@
 import java.util.Collection;
 import java.util.HashSet;
 
-public class EjemploCollection {
+public class ejemplocollection {
 
     public static void main(String[] args) {
 
         // Declaración de Collection usando HashSet
         Collection<String> miColeccion = new HashSet<>();
 
-        // Agrega elementos
+        // Agrega los elementos
         miColeccion.add("Manzana");
         miColeccion.add("Banana");
         miColeccion.add("Naranja");
-        miColeccion.add("Manzana"); // No se agregará (duplicado)
+        miColeccion.add("Manzana"); // No se agregará  (duplicado)
 
-        // Muestra elementos
+        // Muestra los elementos
         System.out.println("Elementos en la colección:");
         System.out.println(miColeccion);
 
