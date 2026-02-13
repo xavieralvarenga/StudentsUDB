@@ -36,14 +36,7 @@ public class Main {
 
                 switch (opcion) {
                     case 1:
-                        //Crear el apartado para agregar alumno
-                        System.out.println("Ingrese el nombre: ");
-                        String nombre = input.next();
-                        System.out.print("Ingrese el carnet: ");
-                        String carnet = input.next();
-
-                        alumnos.put(carnet, nombre);
-                        System.out.println("El alumno se ha agregado correctamente");
+                        agregarAlumno(input,alumnos);
                         break;
                     case 2:
                         //apartado para buscar alumnos
@@ -76,6 +69,17 @@ public class Main {
     }
 
     // --- MÉTODOS ENCAPSULADOS ---
+
+    private static void agregarAlumno(Scanner input, Map<String, String> alumnos) {
+        //Crear el apartado para agregar alumno
+        System.out.println("Ingrese el nombre: ");
+        String nombre = input.next();
+        System.out.print("Ingrese el carnet: ");
+        String carnet = input.next();
+
+        alumnos.put(carnet, nombre);
+        System.out.println("El alumno se ha agregado correctamente");
+    }
 
     /**
      * Encapsulación del metodo de búsqueda de alumno por carnet
